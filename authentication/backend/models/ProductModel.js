@@ -1,9 +1,10 @@
-const Sequelize = require('sequelize');
-const db = require('../config/Database');
+import Sequelize from 'sequelize';
+import db from '../config/database';
+import Users from './UserModel';
 
 const {DataTypes} = Sequelize;
 
-const Users = db.define('users', {
+const Products = db.define('products', {
     uuid: {
         type: DataTypes.STRING,
         defaultValue: DataTypes.UUIDV4,
@@ -21,25 +22,16 @@ const Users = db.define('users', {
             len: [3, 100],
         }
     },
-    email: {
-        type: DataTypes.STRING,
-        defaultValue: DataTypes.UUIDV4,
-        allowNull: false,
-        validate: {
-            notEmpty: true,
-            isEmail: true,
-        }
-    },
-    password: {
-        type: DataTypes.STRING,
+    price: {
+        type: DataTypes.INTEGER,
         defaultValue: DataTypes.UUIDV4,
         allowNull: false,
         validate: {
             notEmpty: true,
         }
     },
-    role: {
-        type: DataTypes.STRING,
+    userId: {
+        type: DataTypes.INTEGER,
         defaultValue: DataTypes.UUIDV4,
         allowNull: false,
         validate: {
@@ -50,4 +42,7 @@ const Users = db.define('users', {
     freezeTableName: true,
 });
 
-export default Users;
+Users.hasMany(Products);
+Products.belongsTo(Users, {foreignKey: 'userId'});
+
+export default Products;

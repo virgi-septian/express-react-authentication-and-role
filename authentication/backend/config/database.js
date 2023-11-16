@@ -1,8 +1,8 @@
-const Sequelize = require('sequelize');
+import { Sequelize } from 'sequelize';
 
 const db = new Sequelize('auth_db', 'root', '', {
     host: 'localhost',
     dialect: 'mysql'
 });
 
-module.exports = db;
+export default db;
