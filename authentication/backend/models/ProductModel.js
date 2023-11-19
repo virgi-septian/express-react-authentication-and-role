@@ -1,4 +1,4 @@
-import Sequelize from 'sequelize';
+import { Sequelize } from 'sequelize';
 import db from '../config/database.js';
 import Users from './UserModel.js';
 
@@ -15,7 +15,6 @@ const Products = db.define('products', {
     },
     name: {
         type: DataTypes.STRING,
-        defaultValue: DataTypes.UUIDV4,
         allowNull: false,
         validate: {
             notEmpty: true,
@@ -24,7 +23,6 @@ const Products = db.define('products', {
     },
     price: {
         type: DataTypes.INTEGER,
-        defaultValue: DataTypes.UUIDV4,
         allowNull: false,
         validate: {
             notEmpty: true,
@@ -32,7 +30,6 @@ const Products = db.define('products', {
     },
     userId: {
         type: DataTypes.INTEGER,
-        defaultValue: DataTypes.UUIDV4,
         allowNull: false,
         validate: {
             notEmpty: true,

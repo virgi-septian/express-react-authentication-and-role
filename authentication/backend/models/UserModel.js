@@ -1,4 +1,4 @@
-import Sequelize from 'sequelize';
+import { Sequelize } from 'sequelize';
 import db from '../config/database.js';
 
 const {DataTypes} = Sequelize;
@@ -8,13 +8,13 @@ const Users = db.define('users', {
         type: DataTypes.STRING,
         defaultValue: DataTypes.UUIDV4,
         allowNull: false,
+        primaryKey: true,
         validate: {
             notEmpty: true,
         }
     },
     name: {
         type: DataTypes.STRING,
-        defaultValue: DataTypes.UUIDV4,
         allowNull: false,
         validate: {
             notEmpty: true,
@@ -23,7 +23,6 @@ const Users = db.define('users', {
     },
     email: {
         type: DataTypes.STRING,
-        defaultValue: DataTypes.UUIDV4,
         allowNull: false,
         validate: {
             notEmpty: true,
@@ -32,7 +31,6 @@ const Users = db.define('users', {
     },
     password: {
         type: DataTypes.STRING,
-        defaultValue: DataTypes.UUIDV4,
         allowNull: false,
         validate: {
             notEmpty: true,
@@ -40,7 +38,6 @@ const Users = db.define('users', {
     },
     role: {
         type: DataTypes.STRING,
-        defaultValue: DataTypes.UUIDV4,
         allowNull: false,
         validate: {
             notEmpty: true,

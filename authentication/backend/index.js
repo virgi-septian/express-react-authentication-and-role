@@ -2,9 +2,10 @@ import express from'express';
 import cors from'cors';
 import session from'express-session';
 import dotenv from'dotenv';
-// import db from './config/database.js'
+import db from './config/database.js'
 import UserRoute from './routes/UserRoute.js'
 import ProductRoute from './routes/ProductRoute.js'
+
 dotenv.config();
 
 const app = express();
@@ -28,9 +29,13 @@ app.use(cors({
 }));
 
 app.use(express.json());
+// app.get('/', (req, res) => {
+//     res.send('Server is up and running.');
+// });
+app.use(express.urlencoded({ extended: false }));
 app.use(UserRoute);
 app.use(ProductRoute);
 
-app.listen(process.env.APP_PORT, ()=> {
-    console.log('Server up and Running ..');
+app.listen(process.env.APP_PORT, () => {
+    console.log('Server is running on port ' + process.env.APP_PORT);
 });

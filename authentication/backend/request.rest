@@ -1,5 +1,5 @@
-# Create a user
-POST https://localhost:5000/users/create
+// Create a user
+POST http://localhost:5000/users
 
 content-type: application/json
 
@@ -7,6 +7,8 @@ content-type: application/json
     "name": "Virgi",
     "email": "admin@gmail.com",
     "password": "password",
-    "confPassword": "password",
     "role": "admin"
 }
+###
+// get all user
+GET http://localhost:5000/users
