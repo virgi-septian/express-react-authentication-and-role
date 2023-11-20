@@ -8,7 +8,6 @@ const Users = db.define('users', {
         type: DataTypes.STRING,
         defaultValue: DataTypes.UUIDV4,
         allowNull: false,
-        primaryKey: true,
         validate: {
             notEmpty: true,
         }
