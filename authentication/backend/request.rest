@@ -3,17 +3,16 @@ GET http://localhost:5000/users
 
 
 // Create User
-
 ###
 POST http://localhost:5000/users
 Content-Type: application/json
 
 {
-  "name": "Virgi",
-  "email": "admin@gmail.com",
+  "name": "Ian",
+  "email": "ian@gmail.com",
   "password": "password",
   "confPassword": "password",
-  "role": "admin"
+  "role": "user"
 }
 
 // Update User
@@ -36,3 +35,16 @@ DELETE http://localhost:5000/users/37cabcd2-11fb-45f7-b7bd-d4858017638f
 // Get single data
 ###
 GET http://localhost:5000/users/37cabcd2-11fb-45f7-b7bd-d4858017638f
+
+// Login
+###
+POST http://localhost:5000/login
+Content-Type: application/json
+
+{   
+  "email" : "ian@gmail.com",
+  "password": "password" 
+}
+
+###
+GET http://localhost:5000/me
