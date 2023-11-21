@@ -1,5 +1,4 @@
 import express from "express";
-
 import {
     getProductById,
     getProducts,
@@ -7,13 +6,14 @@ import {
     updatedProduct,
     deleteProduct,
 } from '../controllers/Products.js'
+import { verifyUser } from "../middleware/AuthUser.js";
 
 const router = express.Router();
 
-router.get('/products', getProducts);
-router.get('/products/:id', getProductById);
-router.post('/products', createdProduct);
-router.patch('/products/:id', updatedProduct);
-router.delete('/users', deleteProduct);
+router.get('/products',verifyUser, getProducts);
+router.get('/products/:id',verifyUser, getProductById);
+router.post('/products',verifyUser, createdProduct);
+router.patch('/products/:id',verifyUser, updatedProduct);
+router.delete('/users',verifyUser, deleteProduct);
 
 export default router;
