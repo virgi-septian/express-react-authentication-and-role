@@ -91,7 +91,7 @@ export const deleteUser = async(req, res) => {
         }
     });
 
-    if(!user) return res.status('404').json({msg: 'User tidak ditemukan'});
+    if(!user) return res.status(404).json({msg: 'User tidak ditemukan'});
 
     try {
         await User.destroy({
@@ -102,6 +102,5 @@ export const deleteUser = async(req, res) => {
         res.status(200).json({mgs: `User deleted`});
     } catch (error) {
         res.status(400).json({msg: error.message})
-        console.log(req);
     }
 }

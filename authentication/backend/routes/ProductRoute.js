@@ -14,6 +14,6 @@ router.get('/products',verifyUser, getProducts);
 router.get('/products/:id',verifyUser, getProductById);
 router.post('/products',verifyUser, createdProduct);
 router.patch('/products/:id',verifyUser, updatedProduct);
-router.delete('/users',verifyUser, deleteProduct);
+router.delete('/products/:id',verifyUser, deleteProduct);
 
 export default router;
