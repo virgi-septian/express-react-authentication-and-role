@@ -6,7 +6,7 @@ const Navbar = () => {
     <div>
       <nav className="navbar is-fixed-top has-shadow" role="navigation" aria-label="main navigation">
         <div className="navbar-brand">
-          <NavLink to="/dashboard" className="navbar-item">
+          <NavLink to="{/dashboard}" className="navbar-item">
             <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28" alt='logo'/>
           </NavLink>
       
@@ -21,9 +21,9 @@ const Navbar = () => {
           <div className="navbar-end">
             <div className="navbar-item">
               <div className="buttons">
-                <a className="button is-light">
+                {/* <a className="button is-light">
                   Log out
-                </a>
+                </a> */}
               </div>
             </div>
           </div>
