@@ -25,6 +25,23 @@ export const LoginUser = createAsyncThunk("user/loginUser", async (user, thunkAp
   }
 });
 
+export const getMe = createAsyncThunk("user/getMe", async (_, thunkApi )=> {
+  try {
+    const response = await axios.get('http://localhost:5000/me')
+
+    return response.data;
+  } catch (error) {
+    if(error.response){
+      const message = error.response.data.msg;
+      return thunkApi.rejectWithValue(message);
+    }
+  }
+});
+
+export const logOut = createAsyncThunk("user/logOut", async () => {
+  await axios.delete('http://localhost:5000/logout')
+});
+
 export const authSlice = createSlice({
   name: "auth",
   initialState,
@@ -45,8 +62,23 @@ export const authSlice = createSlice({
       state.isError = true;
       state.message = action.payload;
     })
+
+    // get user login
+    builder.addCase(getMe.pending, (state) => {
+      state.isLoading = true;
+    });
+    builder.addCase(getMe.fulfilled, (state, action) => {
+      state.isLoading = false;
+      state.isSuccess = true;
+      state.user = action.payload;
+    });
+    builder.addCase(getMe.rejected, (state, action) => {
+      state.isLoading = false;
+      state.isError = true;
+      state.message = action.payload;
+    })
   }
 });
 
-export const {reset} = authSlice.action;
-export default authSlice.reducers;
+export const {reset} = authSlice.actions;
+export default authSlice.reducer;
