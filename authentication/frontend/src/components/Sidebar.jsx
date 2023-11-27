@@ -24,16 +24,18 @@ const Sidebar = () => {
           <li><NavLink to={"/dashboard"}><IoHome/> Dashboard</NavLink></li>
           <li><NavLink to={'/products'}><IoPricetag/> Product</NavLink></li>
         </ul>
-        {user && user.user.role === "admin"}{
+        {user && user.role === "admin" &&
           <div>
-            <p className="menu-label">
-              Admin
-            </p>
-          </div>
+          <p className="menu-label">Admin</p>
+          <ul className="menu-list">
+            <li>
+              <NavLink to={"/users"}>
+                <IoPerson /> Users
+              </NavLink>
+            </li>
+          </ul>
+        </div>
         }
-        <ul className="menu-list">
-          <li><NavLink to={"/users"}><IoPerson/> Users</NavLink></li>
-        </ul>
         <p className="menu-label">
           Setting
         </p>

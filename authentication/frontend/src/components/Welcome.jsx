@@ -6,7 +6,7 @@ const Welcome = () => {
   return (
     <div>
       <h1 className='title'>Dashbord</h1>
-      <h2 className='subtitle'>Welcome back <strong>{user.user.name}</strong></h2>
+      <h2 className='subtitle'>Welcome back <strong>{user && user.user.name}</strong></h2>
     </div>
   )
 }
